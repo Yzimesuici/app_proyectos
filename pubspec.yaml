@@ -1,0 +1,23 @@
+name: app_proyectos
+description: "Pantalla con 1 texto, 1 imagen, 1 un piesote"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/935ee184be5f8bffacf006bbc234fb51.jpg

@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'alarm_screen.dart';
 import 'calendar_screen.dart';
+import 'ubicacion_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final Map<String, dynamic> userData;
 
-  const HomeScreen({super.key, required this.userData});
+  const HomeScreen({
+    Key? key,
+    required this.userData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final String userName = userData['nombre'] ?? 'Usuario';
+    final String userEmail = userData['correo'] ?? '';
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenido, ${userData['nombre']}'),
+        title: Text('Bienvenido, $userName'),
       ),
       body: Center(
         child: Padding(
@@ -19,17 +26,30 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.timer, size: 80, color: Colors.blue),
-              const SizedBox(height: 20),
+              const Icon(
+                Icons.timer,
+                size: 80,
+                color: Colors.blue,
+              ),
+              const SizedBox(height: 16),
               const Text(
                 'Panel Principal de With Time',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const SizedBox(height: 10),
-              Text('Correo: ${userData['correo']}'),
-              const SizedBox(height: 40),
+              const SizedBox(height: 8),
+              Text(
+                'Correo: $userEmail',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[700],
+                ),
+              ),
+              const SizedBox(height: 32),
 
-              // Botón para Alarmas
+              // Botón Gestionar Alarmas
               ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
@@ -42,9 +62,9 @@ class HomeScreen extends StatelessWidget {
                 icon: const Icon(Icons.alarm),
                 label: const Text('Gestionar Alarmas'),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
 
-              // Botón para Calendario
+              // Botón Ver Calendario
               ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
@@ -56,6 +76,19 @@ class HomeScreen extends StatelessWidget {
                 },
                 icon: const Icon(Icons.calendar_month),
                 label: const Text('Ver Calendario'),
+              ),
+              const SizedBox(height: 12),
+
+              // Botón Seleccionar Ubicación (Abre el Mapa)
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const UbicacionScreen()),
+                  );
+                },
+                icon: const Icon(Icons.map),
+                label: const Text('Seleccionar Ubicación'),
               ),
             ],
           ),

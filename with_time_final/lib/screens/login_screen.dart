@@ -44,7 +44,6 @@ class _LoginScreenState extends State<LoginScreen> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
 
-        // Mostrar mensaje devuelto por el servidor
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(data['message'])),
         );
@@ -52,7 +51,6 @@ class _LoginScreenState extends State<LoginScreen> {
         if (data['success'] == true) {
           final userData = data['user'];
 
-          // Navegar a la pantalla principal y cerrar el login
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(

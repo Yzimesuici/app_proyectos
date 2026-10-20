@@ -78,8 +78,7 @@ class HomeScreen extends StatelessWidget {
                 label: const Text('Ver Calendario'),
               ),
               const SizedBox(height: 12),
-
-              // Botón Seleccionar Ubicación (Abre el Mapa)
+              
               ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
